@@ -1,0 +1,186 @@
+body {
+     font-family: 'Press Start 2P', sans-serif;
+     background-color: #121212;
+     color: #ffffff;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     margin: 0;
+     overflow: hidden;
+ }
+ 
+ @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+ 
+ .overlay {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: linear-gradient(45deg, #00ff00, #009900);
+     background-size: 400% 400%;
+     animation: gradientAnimation 15s ease infinite;
+     z-index: -1;
+ }
+ 
+ @keyframes gradientAnimation {
+     0% {
+         background-position: 0% 50%;
+     }
+     50% {
+         background-position: 100% 50%;
+     }
+     100% {
+         background-position: 0% 50%;
+     }
+ }
+ 
+ .container {
+     width: 90%;
+     max-width: 1200px;
+     background-color: rgba(30, 30, 30, 0.9);
+     border: 2px solid #00ff00;
+     border-radius: 10px;
+     padding: 20px;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+     overflow-y: auto;
+     height: 90vh;
+ }
+ 
+ .title-banner {
+     text-align: center;
+     color: #00ff00;
+     margin-bottom: 20px;
+     font-size: 3.5em;
+     font-weight: bold;
+     text-transform: uppercase;
+     letter-spacing: 3px;
+     animation: textGlow 3s ease-in-out infinite;
+ }
+ 
+ @keyframes textGlow {
+     0%, 100% {
+         text-shadow: 0 0 10px rgba(0, 255, 0, 0.7), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.3);
+     }
+     50% {
+         text-shadow: 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.3), 0 0 40px rgba(0, 255, 0, 0.1);
+     }
+ }
+ 
+ .calendar {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .event {
+     display: flex;
+     flex-direction: column;
+     margin: 15px 0;
+     padding: 10px;
+     background-color: #232323;
+     border-left: 5px solid #00ff00;
+     border-radius: 5px;
+     transition: transform 0.3s, background-color 0.3s;
+     animation: eventFadeIn 0.5s ease-in-out;
+ }
+ 
+ .event:hover {
+     transform: scale(1.03);
+     background-color: #2e2e2e;
+ }
+ 
+ .date {
+     width: 100%;
+     background-color: #00ff00;
+     color: #000000;
+     padding: 10px;
+     text-align: center;
+     border-radius: 5px 5px 0 0;
+     font-size: 1.2em;
+     font-weight: bold;
+     animation: slideIn 0.5s ease-out;
+ }
+ 
+ .details {
+     padding: 10px;
+     margin-left: 0;
+ }
+ 
+ .details h2 {
+     margin: 0 0 5px;
+     color: #00ff00;
+     font-size: 1.3em;
+     text-transform: uppercase;
+ }
+ 
+ .details p {
+     margin: 0;
+     color: #bbbbbb;
+ }
+ 
+ @keyframes slideIn {
+     from {
+         transform: translateX(-100%);
+     }
+     to {
+         transform: translateX(0);
+     }
+ }
+ 
+ @keyframes eventFadeIn {
+     from {
+         opacity: 0;
+         transform: scale(0.9);
+     }
+     to {
+         opacity: 1;
+         transform: scale(1);
+     }
+ }
+ 
+ /* Animaciones sutiles para eventos */
+ @keyframes subtleAnimation {
+     0%, 100% {
+         transform: translateY(0);
+     }
+     50% {
+         transform: translateY(-3px);
+     }
+ }
+ 
+ .event:nth-child(odd) {
+     animation: subtleAnimation 1s ease-in-out infinite alternate;
+ }
+ 
+ .event:nth-child(even) {
+     animation: subtleAnimation 1s ease-in-out infinite alternate-reverse;
+ }
+ 
+ /* Responsividad */
+ @media (min-width: 600px) {
+     .event {
+         flex-direction: row;
+     }
+ 
+     .date {
+         width: auto;
+         min-width: 80px;
+         border-radius: 5px 0 0 5px;
+     }
+ 
+     .details {
+         margin-left: 10px;
+     }
+ }
+ 
+ @media (max-width: 599px) {
+     .title-banner {
+         font-size: 2em;
+     }
+ 
+     .details h2 {
+         font-size: 1.1em;
+     }
+ }
+ 
